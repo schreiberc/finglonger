@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/setup.css">
+    </head>
+    <body>
+    <div id="container">
+        <!--[if lt IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->        
+        <!-- Add your site or application content here -->
+        <form id="install">            
+            <img src="../assets/img/logo_2.png">
+            <h1>Finglonger Setup</h1>
+            <label>Database Credentials</label>
+            <input value="" placeholder="Database Name" name="databasename" />
+            <input value="" placeholder="Database User" name="databaseuser" />
+            <input type="password" value="" placeholder="Password" name="password" />
+            <input value="" placeholder="localhost" name="hostname" />
+            <label>Set Your Login</label>
+            <input type="email" value="" placeholder="Email" name="email" />
+            <input type="password" value="" placeholder="Password" name="user_password" />
+            <button type="submit">Install Finglonger</button>
+        </form>
+        <div id="installing">
+            <h1>Installing Fingonger</h1>            
+            <div id="loading-bar">
+                <div id="loaded"></div>
+            </div>
+            <span id="install-details"></span>
+        </div>
+        <div id="error" style="display: none;margin-top:10px;">
+            <div id="problem" style="text-align: left;margin-bottom: 15px;"></div>
+            <button id="restart-setup">Retry Setup</button>
+        </div>
+                          
+    </div>
+    <script src="js/vendor/jquery-1.11.3.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+    <script src="js/setup.js"></script>
+        
+    </body>
+</html>
