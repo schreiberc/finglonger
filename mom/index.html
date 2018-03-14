@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="cms" ng-controller="AppCtrl as mainCtrl">
+  <head>
+    <meta charset="utf-8">
+    <title>MOM - Resource Managment</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script src="semantic/semantic.min.js"></script>
+  <script src="semantic/components/dropdown.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="semantic/components/dropdown.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+  <script src="lib/dropzone.js"></script>
+
+    <style>
+      .ng-cloak{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="site-container" class="ui">
+
+      <div ui-view="navbar"></div>
+      <div class="main-content">
+        <div class="ui info message" ng-show="softwareUpdateAvailable || databaseUpdateAvailable">
+          <div class="header">Update Available</div>
+          <p>There is an update to finglonger. Get the latest version at <a target="_blank" style="text-decoration: underline;" href="http://finglonger.io">finglonger.io</a></p>
+        </div>
+        <div ui-view="main"></div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script> 
+    <script src="js/services.js"></script> 
+    <script src="js/directives.js"></script> 
+    <script src="components/user-services/login.js"></script>
+    <script src="components/resources/resources.js"></script>
+    <script src="components/users/users.js"></script>    
+    <script src="components/user-types/user-types.js"></script>
+    <script src="components/emails/emails.js"></script>
+    <script src="components/email-settings/emails.js"></script>
+   
+  </body>
+</html>

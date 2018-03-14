@@ -1,0 +1,56 @@
+<div class="ui message" ng-show="error">
+  <i ng-click="error = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{error}}</p>
+</div>
+<div class="ui secondary pointing menu">
+  <a class="item" ng-class="{'active': filterCat == 0}" ng-click="filterCat = 0">
+    Available Resources
+  </a>
+  <a class="item" ng-class="{'active': filterCat == 2}" ng-click="filterCat = 2">
+    Active Resources
+  </a>
+  <a class="item" ng-class="{'active': filterCat == 1}" ng-click="filterCat = 1">
+    System Resources
+  </a>
+</div>
+<div class="ui" ng-show="loading" style="min-height: 300px;position: relative;">
+  <div class="ui active inverted dimmer">
+    <div class="ui text loader">Loading Resources</div>
+  </div>
+  <p></p>
+</div>
+
+<div class="ui middle aligned divided list" ng-hide="loading">
+  <div class="item" ng-repeat="post in resources | filter : {resource_category_id: filterCat}: false">
+    <div class="right floated content">
+      <a style="min-width: 120px;" ng-if="!post.resource_id" ui-sref="create-resource({name: post.resource_name})" class="ui floated small primary labeled icon button"><i class="plus icon"></i>Create</a>
+      <a style="min-width: 120px;" ng-if="post.resource_id" ui-sref="resourceid({id: post.resource_id})" class="ui floated small primary labeled icon button"><i class="write icon"></i>Edit</a>
+    </div>
+    <div class="content" style="margin-top: 8px;">
+      {{post.resource_name}}
+    </div>
+  </div>
+  <div class="item" ng-show="(resources | filter : {resource_category_id: filterCat}: false).length == 0" style="text-align: center;margin-top: 60px;">
+    <div ng-show="filterCat == 0">
+      <h2>We couldn't find any available resources.</h2>
+      <p>If you have already created a resource they will be in the <a ng-click="filterCat = 2">Active Resources tab</a> above.</p>
+      <p>To learn how to create a database resources checkout the documentation at: <a href="http://help.finglonger.io/docs/resources/">help.finglonger.io/docs/resources/</a></p>
+      <div class="ui horizontal divider">
+        Or
+      </div>
+      <p>Create a custom PHP resources checkout the documentation at: <a href="http://help.finglonger.io/docs/custom-php-resources/">help.finglonger.io/docs/resources/</a></p>
+    </div>
+    <div ng-show="filterCat == 2">
+      <h2>There are no active resources.</h2>
+      <p>Resources will show here after they have already been created, and are available to be called in a URL</p>
+      <p>Click on the <a ng-click="filterCat = 0">Available Resources Tab</a> above to see if you have any resources that can be created.</p>
+      <div class="ui horizontal divider">
+        Or
+      </div>
+      <p>To learn more about what resources are and how they are created checkout the documentation at: <a href="http://help.finglonger.io/docs/resources/">help.finglonger.io/docs/resources/</a></p>      
+    </div>
+  </div>
+</div>

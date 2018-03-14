@@ -1,0 +1,69 @@
+<div class="ui message" ng-show="errors">
+  <i ng-click="errors = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{errors}}</p>
+</div>
+
+<div id="content-form" class="ui loading form" ng-class="{'success': formSuccess}">
+	<a ui-sref="users"><i class="reply icon"></i>Back to User List</a>
+	<h2 ng-if="view == 'edit'">Edit User: {{user.first_name}} {{user.last_name}}</h2>
+	<h2 ng-if="view == 'create'">Create New User</h2>
+	<div class="two fields">
+		<div class="field">
+			<label>Username</label>
+		    <input required type="text" ng-model="user.user_name">
+		</div>
+		<div class="field">
+			<label>First Name</label>
+		    <input type="text" ng-model="user.first_name">
+		</div>
+	</div>
+	<div class="two fields">
+		<div class="field">
+		    <label>Last Name</label>
+		    <input type="text" ng-model="user.last_name">
+		</div>
+		
+		<div class="field">
+		    <label>Email</label>
+		    <input required type="text" ng-model="user.email">
+		</div>
+	</div>
+	<div class="field" ng-if="view == 'create'">
+		<label>Password</label>
+		<input type="password" class='ui  input' placeholder='Password' ng-model='user.password'>
+	</div>	  
+		
+	<div class="two fields">	  
+		<div class="field">
+		  	<label>User Type</label>
+		    <div class="ui selection dropdown"  >
+		  		<input id='user_type_id' type="hidden" >
+		  			<i class="dropdown icon"></i>
+		  			<div class="default text">{{user_type_name}}</div>
+		 			<div class="menu">
+		 			<div class="item" data-value="{{usertype.user_type_id}}" ng-repeat="usertype in usertypes">{{usertype.user_type}}</div>
+		  		</div>
+			</div>	
+		</div>	
+		<div class="field" ng-if="view == 'edit'">
+		    <label>New Password</label>
+			<div class="ui action left icon input">
+			  <i ng-class="{'lock': updatePassword == false, 'unlock': updatePassword == true}" class="icon"></i>
+			  <input type="password" class='ui input' ng-disabled="!updatePassword" id='password'>
+			  <div class="ui teal button primary" ng-click="updatePassword =! updatePassword"><span ng-hide="updatePassword">Unlock</span><span ng-show="updatePassword">Lock</span>&nbsp;Password Field</div>
+			</div>		    
+		</div>
+		  
+
+	</div>
+	<div class="ui success message">
+	  	<i ng-click="formSuccess = false" class="close icon"></i>
+	    <div class="header">Save Successful</div>    
+	</div>
+	<div ng-click="save()" class="ui primary submit button">Save</div>
+</div>
+
+

@@ -1,0 +1,26 @@
+<div class="ui message" ng-show="errors">
+  <i ng-click="errors = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{errors}}</p>
+</div>
+
+<div id="content-form" class="ui loading form" ng-class="{'success': formSuccess}">
+  <a ui-sref="user-types"><i class="reply icon"></i>Back to User Type List</a>
+	
+	<h2 ng-if="view == 'edit'">Edit User Type: {{usertype.user_type}}</h2>
+	<h2 ng-if="view == 'create'">Create New Use Typer</h2>	
+	
+  <div class="field">
+    <label>Name</label>
+    <input required type="text" ng-model="usertype.user_type">
+  </div>
+
+  <div class="ui success message">
+  	<i ng-click="formSuccess = false" class="close icon"></i>
+    <div class="header">Save Successful</div>    
+  </div>
+  
+  <div ng-click="save()" class="ui primary submit button">Submit</div>
+</div>

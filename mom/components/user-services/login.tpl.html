@@ -1,0 +1,60 @@
+ <style type="text/css">
+  body {
+    background-color: #00bcd7;
+  }
+  .main-content{
+    margin-top: 0;
+    margin-left: 0;
+    height: 100%;
+  }
+  .main-content h2.ui.header{
+    color: #00bcd7;
+  }
+  .main-content > div, .main-content .grid{
+    height: 100%;
+  }    
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    margin-top: -100px;
+    max-width: 450px;
+  }
+</style>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">    
+    <form ng-submit="login()" class="ui form" ng-class="{'error': errors != ''}">
+      <div class="ui stacked segment">
+        <h2 class="ui image header">
+          <img style="margin-bottom: 20px;" src="img/logo_blue.png" class="image">
+          <div class="content">
+            Login to MOM
+          </div>
+        </h2>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input required="required" ng-model="username" name="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input required="required" ng-model="password" type="password" name="password">
+          </div>
+        </div>
+        <button class="ui fluid large submit primary button" type="submit">Login</button>
+        
+      </div>
+
+      <div class="ui error message">
+        <p>{{errors}}</p>
+      </div>
+
+    </form>
+
+    <div class="ui message">
+      <a ui-sref="forgot-password">Forgot your password?</a>
+    </div>
+  </div>
+</div>

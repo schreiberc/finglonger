@@ -1,0 +1,72 @@
+<div class="ui message" ng-show="error">
+  <i ng-click="error = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{error}}</p>
+</div>
+
+<div id="content-form" class="ui loading form" ng-class="{'success': formSuccess}">
+  <a ui-sref="resources"><i class="reply icon"></i>Back to Resource List</a>
+  <h2>Resource Name: {{resource.resource_name}}</h2>
+  <h2>User Access</h2>
+  <table class="ui compact celled definition table">
+  <thead>
+    <tr>      
+      <th>User Type</th>
+      <th>GET</th>
+      <th>POST</th>
+      <th>DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="access in resource.fl_user_type_resource_access">
+      <td>
+        <span ng-repeat="usertype in usertypes" ng-if="access.user_type_id == usertype.user_type_id">{{usertype.user_type}}</span>
+      </td>
+      <td>
+        <div class="ui fitted slider checkbox">
+          <input type="checkbox" ng-model="access.get_allowed" ng-true-value="'true'" ng-false-value="'false'"> <label></label>
+        </div>
+      </td>
+      <td>
+        <div class="ui fitted slider checkbox">
+          <input type="checkbox" ng-model="access.post_allowed" ng-true-value="'true'" ng-false-value="'false'"> <label></label>
+        </div>
+      </td>
+      <td>
+        <div class="ui fitted slider checkbox">
+          <input type="checkbox" ng-model="access.delete_allowed" ng-true-value="'true'" ng-false-value="'false'"> <label></label>
+        </div>
+      </td>
+    </tr>    
+  </tbody>
+  </table>
+  <!-- CODY 
+  When creating the resource mirror add this.
+  https://s-media-cache-ak0.pinimg.com/originals/d6/38/df/d638df671105c28ef0a4f9a03428b80a.jpg
+  -->  
+  <div class="ui success message">
+  	<i ng-click="formSuccess = false" class="close icon"></i>
+    <div class="header">Save Successful</div>    
+  </div>
+  <div ng-click="save()" class="ui primary submit button">Save</div>
+  <div style="margin: 60px 0;" class="ui divider"></div>
+  <h2>Test the response</h2>
+  <p>If you have GET set above you can visit <a target="_blank" href="../service/{{resource.resource_name}}">[root directory]/service/{{resource.resource_name}}</a> in your browser.</p>
+  <p>Or click below to see the response.</p>
+
+  <div class="ui grid">        
+    <div class="eight wide column center aligned">
+  
+      <button style="margin-right: 30px;" ng-click="loadResource()" class="massive ui button">GET</button>
+      <button ng-click="loadResource()" class="massive ui button" disabled="">POST</button>
+    </div>
+    <div class="eight wide column">
+      <div class="field">
+        <label>Response</label>
+        <textarea rows="25">{{response}}</textarea>
+      </div>
+    </div>
+  </div>
+</div>

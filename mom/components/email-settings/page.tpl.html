@@ -1,0 +1,76 @@
+<div class="ui message" ng-show="error">
+  <i ng-click="error = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{error}}</p>
+</div>
+
+<div id="settings-content-form" class="ui loading form" ng-class="{'success': settingsFormSuccess}">
+  <h2>{{settings.setting_name}}</h2>
+  <p>Email sent from finglonger will use these details.</p>
+  <div class="three fields">
+    <div class="field">
+      <label>{{settings.fl_setting_meta[0].meta_name}}</label>
+      <input type="text" ng-model="settings.fl_setting_meta[0].meta_value">
+    </div>
+    <div class="field">
+      <label>{{settings.fl_setting_meta[1].meta_name}}</label>
+      <input type="text" ng-model="settings.fl_setting_meta[1].meta_value">
+    </div>
+    <div class="field">
+      <label>{{settings.fl_setting_meta[2].meta_name}}</label>
+      <input type="text" ng-model="settings.fl_setting_meta[2].meta_value">
+    </div>
+  </div>
+  
+  <div class="ui success message">
+    <i ng-click="settingsFormSuccess = false" class="close icon"></i>
+    <div class="header">Save Successful</div>    
+  </div>
+  <div ng-click="saveSettings()" class="ui primary submit button">Submit</div>
+</div>
+<div class="ui divider"></div>
+<div id="mailgun-content-form" class="ui loading form" ng-class="{'success': mailgunFormSuccess}">
+  <h2>{{mailgun.integration_name}}</h2>
+  <p>Sent emails from the platform use <a href="http://php.net/manual/en/function.mail.php">PHPMail</a> by default. Its not the most reliable. We recommend using <a href="https://www.mailgun.com/">mailgun</a> to ensure your emails make it safely to their recipients.</p>
+  <div class="inline field">
+    <div class="ui toggle checkbox">
+      <input ng-model="mailgun.enabled" ng-true-value="'true'" ng-false-value="'false'"  type="checkbox" tabindex="0">
+      <label>Enabled</label>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>{{mailgun.fl_integration_meta[0].meta_name}}</label>
+      <input type="text" ng-model="mailgun.fl_integration_meta[0].meta_value">
+    </div>
+    <div class="field">
+      <label>{{mailgun.fl_integration_meta[1].meta_name}}</label>
+      <input type="text" ng-model="mailgun.fl_integration_meta[1].meta_value">
+    </div>
+  </div>
+  <div class="ui success message">
+  	<i ng-click="mailgunFormSuccess = false" class="close icon"></i>
+    <div class="header">Save Successful</div>    
+  </div>
+  <div ng-click="saveMailgun()" class="ui primary submit button">Submit</div>
+</div>
+<!-- <div class="ui divider"></div>
+<div id="session_duration-form" class="ui loading form" ng-class="{'success': session_durationFormSuccess}">
+  <h2>{{session_duration.setting_name}}</h2>
+  <p>How long before a user session will expire.</p>
+  
+    <div class="field">
+      <label>{{session_duration.fl_setting_meta[0].meta_name}}</label>
+      <input type="text" ng-model="session_duration.fl_setting_meta[0].meta_value">
+    </div>
+  
+  
+  <div class="ui success message">
+    <i ng-click="session_durationFormSuccess = false" class="close icon"></i>
+    <div class="header">Save Successful</div>    
+  </div>
+  <div ng-click="saveSession_duration()" class="ui primary submit button">Submit</div>
+</div> -->
+

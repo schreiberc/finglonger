@@ -1,0 +1,58 @@
+<div class="ui message" ng-show="error">
+  <i ng-click="error = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{error}}</p>
+</div>
+<div class="ui secondary pointing menu">
+  <a class="item active">
+    All Email Templates
+  </a>
+</div>
+<div class="ui" ng-show="loading" style="min-height: 300px;position: relative;">
+  <div class="ui active inverted dimmer">
+    <div class="ui text loader">Loading Resources</div>
+  </div>
+  <p></p>
+</div>
+
+<div class="ui middle aligned divided list">
+  <div class="item" ng-repeat="item in emails">
+    <div class="right floated content">      
+      <a ui-sref="emailid({id: item.email_id})" class="ui floated small primary labeled icon button"><i class="write icon"></i>Edit</a>
+      <button ng-if="item.locked == 'true'" class="ui disabled button">
+        <i class="lock icon"></i>
+        Delete
+      </button>
+      <button ng-click="requestRemoveItem(item)" ng-if="item.locked != 'true'" class="ui disabled button">
+        <i class="trash icon"></i>
+        Delete
+      </button>
+    </div>
+    <div class="content" style="margin-top: 8px;">
+      {{item.email_name}}
+    </div>
+  </div>
+</div>
+<a ui-sref="create-user-type" class="ui disabled button primary">Create Email Template (Coming Soon)</a>
+
+<div class="ui basic modal" id="deleteModal">
+  <div class="ui icon header">
+    <i class="archive icon"></i>
+    Delete item
+  </div>
+  <div class="content">
+    <p>Are you sure you want to delete this item?</p>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button" ng-click="removeItem()">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>

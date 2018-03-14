@@ -1,0 +1,72 @@
+<div class="ui message" ng-show="error">
+  <i ng-click="error = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{error}}</p>
+</div>
+
+<div class="ui message" ng-show="deletedUser">
+  	<i ng-click="deletedUser = false" class="close icon"></i>
+    <div class="header">Huzzah!</div> 
+    <p><span ng-bind='deletedUser'></span> is gone!</p>
+</div>
+
+<div class="ui message" ng-show="almostDeletedUser">
+  	<i ng-click="deletedUser = false" class="close icon"></i>
+    <div class="header">Close call</div> 
+    <p><span ng-bind='userToDelete.display'></span> lives to fight another day!</p>
+</div>
+
+<div class="ui secondary pointing menu">
+  <a class="item active">
+    All Users
+  </a>
+</div>
+<div class="ui" ng-show="loading" style="min-height: 300px;position: relative;">
+  <div class="ui active inverted dimmer">
+    <div class="ui text loader">Loading Resources</div>
+  </div>
+  <p></p>
+</div>
+<table class="ui basic table" ng-hide="loading" style='border:0;'>
+  <tbody>
+    <tr class="item" ng-repeat="user in users">
+      <td>{{user.user_name}}</td>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.email}}</td>
+      <td class="collapsing">
+        <a ng-if="user.user_id" ui-sref="userid({id: user.user_id})" class="ui floated small primary labeled icon button"><i class="write icon"></i>Edit</a>							
+      </td>
+      <td>
+      	<button ng-click="requestDeleteUser(user)" class="ui button">
+        	<i class="trash icon"></i>
+        	Delete
+      	</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a ui-sref="create-user" class="ui button primary" >Create User</a>
+
+<div class="ui basic modal" id="deleteModal">
+  <div class="ui icon header">
+    <i class="users icon"></i>
+    Delete User
+  </div>
+  <div class="content">
+    <p>Are you sure you want to delete <span style='font-weight:bold; font-size:18px;' ng-bind='userToDelete.display'></span></p>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button" ng-click = "almostDeleteUser()">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button" ng-click="deleteUser()">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>

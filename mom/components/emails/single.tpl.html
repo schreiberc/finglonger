@@ -1,0 +1,31 @@
+<div class="ui message" ng-show="error">
+  <i ng-click="error = ''" class="close icon"></i>
+  <div class="header">
+    Error
+  </div>
+  <p>{{error}}</p>
+</div>
+
+<div id="content-form" class="ui loading form" ng-class="{'success': formSuccess}">
+  <a ui-sref="emails"><i class="reply icon"></i>Back to Emails List</a>
+
+  <h2>Edit Email: {{email.email_name}}</h2>
+  <div class="field">
+    <label>Email Name</label>
+    <input type="text" ng-model="email.email_name">
+  </div>
+  <div class="field">
+    <label>Subject Line</label>
+    <input type="text" ng-model="email.email_subject">
+  </div>
+  <div class="field">
+    <label>Email Body Text</label>
+    <textarea ng-model="email.email_body_text"></textarea>
+  </div>
+
+  <div class="ui success message">
+  	<i ng-click="formSuccess = false" class="close icon"></i>
+    <div class="header">Save Successful</div>    
+  </div>
+  <div ng-click="save()" class="ui primary submit button">Submit</div>
+</div>

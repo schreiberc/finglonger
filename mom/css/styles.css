@@ -1,0 +1,58 @@
+#site-container{
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+.container {
+  padding: 5em 0em;
+}
+
+h1, h3 {
+  margin-top: 10em;
+}
+.white.ui.header{
+	color: #fff;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.ui.icon.header .content, .ui.header .sub.header{
+	color: #fff;
+}
+.ui.vertical.menu{
+	height: 100%;
+	background: #00bcd7;
+	color: #fff;
+}
+.ui.vertical.menu .item{
+	color: #fff;
+}
+.ui.link.menu .item:hover, .ui.menu .dropdown.item:hover, .ui.menu .link.item:hover, .ui.menu a.item:hover, .ui.menu .active.item:hover, .ui.vertical.menu .active.item:hover{
+	color: #eee;
+}
+.list .item{
+	padding: .75em 0 !important;
+}
+.ui.basic.modal p{
+	text-align: center;
+}
+.main-content{
+	margin-top: 50px;
+	margin-left: 250px;
+	margin-right: 25px;
+}
+a{
+	color: #00bcd7;
+}
+.ui.primary.button, .ui.primary.buttons .button{
+	background: #00bcd7;
+}
+.ui.primary.button:hover, .ui.primary.buttons .button:hover{
+	background: #039eb4;
+}
+
+input.error{
+	background-color:#ff0000 !important;
+	color:#fff !important;
+}
